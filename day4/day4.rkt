@@ -56,14 +56,16 @@
                    x))))
 
 (define (count-all-xmas x)
-  (+ (match-and-count-xmas (horizontal-forwards      x))
-     (match-and-count-xmas (horizontal-backwards     x))
-     (match-and-count-xmas (vertical-downwards       x))
-     (match-and-count-xmas (vertical-upwards         x))
-     (match-and-count-xmas (diagonal-downwards-right x))
-     (match-and-count-xmas (diagonal-downwards-left  x))
-     (match-and-count-xmas (diagonal-upwards-right   x))
-     (match-and-count-xmas (diagonal-upwards-left    x))))
+  (apply +
+         (map match-and-count-xmas
+              (list (horizontal-forwards      x)
+                    (horizontal-backwards     x)
+                    (vertical-downwards       x)
+                    (vertical-upwards         x)
+                    (diagonal-downwards-right x)
+                    (diagonal-downwards-left  x)
+                    (diagonal-upwards-right   x)
+                    (diagonal-upwards-left    x)))))
 
 (define (part-one x)
   (count-all-xmas x))
