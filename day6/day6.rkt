@@ -161,18 +161,18 @@
             (let ((next-position
                    (zipper2-select
                     (current-direction current-zipper))))
-              (cond ((or (eq? next-position #\#)
-                         (eq? next-position #\O))
-                     (let ((new-direction
-                            (next-direction current-direction)))
-                       (iterate new-direction
-                                current-zipper)))
-                    (else (iterate current-direction
-                                   (current-direction
-                                    (set-zipper2
-                                     current-zipper
-                                     (mark-and-direction
-                                      current-direction)))))))))))
+              (if (or (eq? next-position #\#)
+                      (eq? next-position #\O))
+                  (let ((new-direction
+                         (next-direction current-direction)))
+                    (iterate new-direction
+                             current-zipper))
+                  (iterate current-direction
+                           (current-direction
+                            (set-zipper2
+                             current-zipper
+                             (mark-and-direction
+                              current-direction))))))))))
 
 (define (count-trues lb)
   (if (null? lb)
