@@ -1,6 +1,5 @@
 #lang racket
 ;;; Advent of Code - Day 5: Print Queue
-
 (define input
   (file->lines "input"))
 
